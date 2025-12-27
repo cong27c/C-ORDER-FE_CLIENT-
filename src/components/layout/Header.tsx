@@ -1,13 +1,15 @@
 "use client";
 
-import { Menu, Search, User, Heart, ShoppingCart } from "lucide-react";
+import { Menu, Search, Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import ProfileDropdown from "@/components/shared/ProfileDropdown";
+import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-[#111111] text-white shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-[#111111] text-white shadow-md">
       <div className="mx-auto flex h-14 items-center justify-between px-4 lg:h-16 lg:px-6">
         {/* Mobile Layout (default to md) */}
         <div className="flex items-center gap-3 md:hidden">
@@ -24,7 +26,9 @@ export function Header() {
 
         {/* Tablet Layout (md to lg) */}
         <div className="hidden md:flex lg:hidden items-center gap-4">
-          <div className="text-2xl font-bold tracking-wider">C-ORDER</div>
+          <div className="text-2xl font-bold tracking-wider cursor-pointer">
+            <Link href="/">C-ORDER</Link>
+          </div>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -37,13 +41,15 @@ export function Header() {
 
         {/* Desktop Layout (lg+) */}
         <div className="hidden lg:flex items-center gap-8">
-          <div className="text-2xl font-bold tracking-wider">C-ORDER</div>
+          <div className="text-2xl font-bold tracking-wider cursor-pointer">
+            <Link href="/">C-ORDER</Link>
+          </div>
 
-          <nav className="flex items-center gap-6">
-            <button className="px-6 py-2 text-sm font-medium uppercase tracking-wide hover:bg-white/10 transition-colors rounded">
+          <nav className="grid grid-cols-2">
+            <button className=" px-6 py-5 text-sm font-medium uppercase tracking-wide hover:bg-white/10 transition-colors  cursor-pointer">
               Nữ
             </button>
-            <button className="px-6 py-2 text-sm font-medium uppercase tracking-wide hover:bg-white/10 transition-colors rounded">
+            <button className=" px-6 py-5 text-sm font-medium uppercase tracking-wide hover:bg-white/10 transition-colors  cursor-pointer">
               Nam
             </button>
           </nav>
@@ -73,12 +79,7 @@ export function Header() {
             <Search className="h-5 w-5 md:h-6 md:w-6" />
           </button>
 
-          <button
-            className="hover:opacity-70 transition-opacity"
-            aria-label="Profile"
-          >
-            <User className="h-5 w-5 md:h-6 md:w-6" />
-          </button>
+          <ProfileDropdown />
 
           <button
             className="hover:opacity-70 transition-opacity"
@@ -109,6 +110,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </div>
+    </header>
   );
 }
