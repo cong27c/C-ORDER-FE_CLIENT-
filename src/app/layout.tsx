@@ -18,10 +18,12 @@ const poppins = Poppins({
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" className={inter.variable}>
-      <Header />
-      <body>{children}</body>
-      <Footer />
+    <html lang="vi" className={`${inter.variable} overflow-x-hidden`}>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

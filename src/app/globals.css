@@ -143,3 +143,73 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom,
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
+
+/* ===== CUSTOM PREV/NEXT ===== */
+.swiper-button-prev-custom,
+.swiper-button-prev,
+.swiper-button-next-custom,
+.swiper-button-next {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.5rem;
+  color: #111111;
+  display: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* HOVER */
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover,
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: scale(1.08);
+  color: #333333;
+  transition: all 0.25s ease;
+}
+
+/* DISABLED */
+.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.product-slider .swiper-pagination-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #d1d5db;
+  opacity: 1;
+}
+
+/* Dot active */
+.product-slider .swiper-pagination-bullet-active {
+  background-color: #111111;
+  transform: scale(1.4);
+}
+
+@media (min-width: 641px) {
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom,
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex;
+  }
+}
