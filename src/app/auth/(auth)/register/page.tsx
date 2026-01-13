@@ -1,41 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
 import { AuthForm } from "@/modules/auth/authForm";
 import { SocialLogin } from "@/modules/auth/components/social-login";
 import { AuthSidebar } from "@/modules/auth/components/auth-sidebar";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       {/* Left */}
       <div className="flex flex-col justify-center px-6 sm:px-12 py-12 bg-white">
         <div className="mb-8">
-          <h1 className="text-4xl font-semibold text-black">Đăng nhập</h1>
+          <h1 className="text-4xl font-semibold text-black">Tạo tài khoản</h1>
         </div>
 
         {/* Form (tự có nút submit) */}
-        <AuthForm type="login" />
-
-        {/* Remember me */}
-        <div className="flex items-center gap-2 mb-6">
-          <Checkbox id="remember" />
-          <label htmlFor="remember" className="text-sm text-gray-700">
-            Nhớ mật khẩu
-          </label>
-        </div>
+        <AuthForm type="register" />
 
         {/* Links */}
-        <div className="flex flex-col sm:flex-row gap-1 text-sm mb-4">
-          <span>
-            Chưa có tài khoản?{" "}
-            <Link href="/auth/register" className="font-semibold">
-              Đăng ký
-            </Link>
-          </span>
-          <span className="hidden sm:inline text-gray-400">•</span>
-          <Link href="/auth/forgot-password">Quên mật khẩu</Link>
+        <div className="text-sm text-center mb-4 mt-4">
+          Đã có tài khoản?{" "}
+          <Link href="/auth/login" className="font-semibold">
+            Đăng nhập
+          </Link>
         </div>
 
         {/* Divider */}

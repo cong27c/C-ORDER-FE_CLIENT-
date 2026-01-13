@@ -1,9 +1,11 @@
-export interface Product {
-  id: number;
+export type Product = {
+  id: string;
   name: string;
-  price: number;
   image: string;
-}
+  price: number;
+  salePrice?: number;
+  isWishlisted?: boolean;
+};
 
 export interface ProductSliderProps {
   items: Product[];
