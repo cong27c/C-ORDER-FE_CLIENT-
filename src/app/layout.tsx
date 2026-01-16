@@ -5,6 +5,8 @@ import Footer from "@/components/layout/Footer";
 import { ToastRoot } from "@/core/hooks/useToast";
 import { MobileMenuProvider } from "@/components/context/MobileMenuContext";
 import TopBar from "@/components/layout/TopBar";
+import { SearchProvider } from "@/components/search";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,15 +22,16 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${inter.variable} overflow-x-hidden`}>
       <body>
-        {/* UI layout state */}
-        <MobileMenuProvider>
-          <TopBar />
-          <div className="h-(--topbar-height)" />
+        <ReactQueryProvider>
+          <SearchProvider>
+            <MobileMenuProvider>
+              <TopBar />
 
-          <main>{children}</main>
-        </MobileMenuProvider>
+              <main className="pt-14 lg:pt-(--topbar-height)">{children}</main>
+            </MobileMenuProvider>
+          </SearchProvider>
+        </ReactQueryProvider>
 
-        {/* Global UI (outside menu context) */}
         <ToastRoot />
         <Footer />
       </body>

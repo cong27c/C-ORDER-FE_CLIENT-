@@ -4,7 +4,6 @@ import { Product } from "@/core/types/product";
 import { Heart } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
-import { motion } from "framer-motion";
 
 export default function ProductCard({ product }: { product: Product }) {
   const [liked, setLiked] = useState(false);

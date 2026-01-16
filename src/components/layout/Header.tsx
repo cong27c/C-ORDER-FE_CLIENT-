@@ -1,13 +1,15 @@
 "use client";
 
-import { Menu, Search, Heart, ShoppingCart } from "lucide-react";
+import { Menu, Heart, ShoppingCart, Search } from "lucide-react";
 import Link from "next/link";
 import clsx from "clsx";
 import { useMobileMenu } from "../context/MobileMenuContext";
 import { Gender } from "@/core/types/category";
+import { SearchInput, SearchOverlay, useSearch } from "../search";
 
 export function Header() {
   const { open, gender, setGender } = useMobileMenu();
+  const { setOpen } = useSearch();
 
   return (
     <header className=" bg-[#111] text-white">
@@ -39,16 +41,19 @@ export function Header() {
         </div>
 
         {/* Search */}
-        <div className="hidden lg:flex flex-1 mx-10">
-          <input
-            className="w-full rounded-full px-4 py-2 text-black"
-            placeholder="Search products"
-          />
+
+        {/* Desktop */}
+        <div className="hidden md:flex flex-1 mx-10">
+          <SearchInput />
         </div>
+
+        {/* Mobile */}
 
         {/* Icons */}
         <div className="ml-auto flex gap-4">
-          <Search />
+          <button className="md:hidden " onClick={() => setOpen(true)}>
+            <Search />
+          </button>
           <Heart />
           <ShoppingCart />
         </div>

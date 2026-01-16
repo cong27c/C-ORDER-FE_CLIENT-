@@ -1,29 +1,23 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
-export function useHideOnScroll() {
+export function useHideOnScroll(threshold = 112) {
   const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        // Scroll xuống
-        setHidden(true);
-      } else {
-        // Scroll lên
+      // CHUẨN ASOS: ở đầu trang luôn hiện
+      if (y <= threshold) {
         setHidden(false);
+      } else {
+        setHidden(true);
       }
-
-      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
 
   return hidden;
 }

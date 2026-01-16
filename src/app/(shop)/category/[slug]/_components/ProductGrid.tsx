@@ -1,6 +1,6 @@
 // ProductGrid.tsx
 import { Product } from "@/core/types/product";
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/product/ProductCard";
 
 export default function ProductGrid({ products }: { products: Product[] }) {
   return (
